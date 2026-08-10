@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hand-In-Hand | Educational Services</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg-main: #f8f5ee;
+			--bg-soft: #fffdf8;
+			--ink: #1f2a3a;
+			--ink-muted: #4a5568;
+			--brand: #0f766e;
+			--brand-dark: #0b5f58;
+			--accent: #ff9f1c;
+			--card: rgba(255, 255, 255, 0.88);
+			--border: #d7e1dd;
+			--shadow: 0 10px 30px rgba(17, 24, 39, 0.09);
+			--radius: 18px;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: "Barlow", "Segoe UI", sans-serif;
+			color: var(--ink);
+			background:
+				radial-gradient(circle at 15% 15%, rgba(255, 159, 28, 0.2), transparent 36%),
+				radial-gradient(circle at 85% 20%, rgba(15, 118, 110, 0.2), transparent 38%),
+				linear-gradient(180deg, var(--bg-main), #eef5f3 55%, #eef1f6);
+			line-height: 1.6;
+			min-height: 100vh;
+		}
+
+		.site-wrap {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 24px;
+			animation: fade-in 0.8s ease-out;
+		}
+
+		.hero {
+			background: linear-gradient(140deg, rgba(15, 118, 110, 0.96), rgba(8, 60, 85, 0.95));
+			color: #f7fffd;
+			border-radius: 24px;
+			padding: 48px 28px;
+			box-shadow: var(--shadow);
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 16px;
+		}
+
+		.hero-brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 14px;
+			margin-bottom: 4px;
+		}
+
+		.hero-brand img {
+			width: 74px;
+			height: 74px;
+			display: block;
+			border-radius: 16px;
+			background: rgba(255, 255, 255, 0.12);
+			padding: 8px;
+		}
+
+		.hero-brand .brand-copy {
+			display: grid;
+			gap: 2px;
+		}
+
+		.hero-brand .brand-copy strong {
+			font-family: "Fraunces", Georgia, serif;
+			font-size: 1.05rem;
+			color: #f7fffd;
+		}
+
+		.hero-brand .brand-copy span {
+			color: #dcfffb;
+			opacity: 0.95;
+			font-size: 0.95rem;
+		}
+
+		.hero::after {
+			content: "";
+			position: absolute;
+			width: 280px;
+			height: 280px;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.15);
+			top: -80px;
+			right: -70px;
+		}
+
+		h1,
+		h2 {
+			font-family: "Fraunces", Georgia, serif;
+			line-height: 1.2;
+		}
+
+		h1 {
+			font-size: clamp(2rem, 5vw, 3.2rem);
+			margin-bottom: 10px;
+			max-width: 12ch;
+		}
+
+		.hero p {
+			max-width: 58ch;
+			font-size: 1.08rem;
+			color: #dcfffb;
+		}
+
+		main {
+			margin-top: 30px;
+			display: grid;
+			gap: 24px;
+		}
+
+		section {
+			background: var(--card);
+			backdrop-filter: blur(3px);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 26px;
+			box-shadow: var(--shadow);
+			animation: rise 0.7s ease both;
+		}
+
+		section:nth-of-type(2) {
+			animation-delay: 0.08s;
+		}
+
+		section:nth-of-type(3) {
+			animation-delay: 0.16s;
+		}
+
+		h2 {
+			margin-bottom: 12px;
+			color: var(--brand-dark);
+			font-size: clamp(1.5rem, 3.5vw, 2rem);
+		}
+
+		.about p {
+			color: var(--ink-muted);
+			max-width: 68ch;
+		}
+
+		.testimonials-grid {
+			display: grid;
+			gap: 14px;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			margin-top: 14px;
+		}
+
+		.testimonial-card {
+			background: var(--bg-soft);
+			border: 1px dashed #b8c7c2;
+			border-radius: 14px;
+			padding: 16px;
+			min-height: 122px;
+		}
+
+		.testimonial-card strong {
+			display: block;
+			margin-bottom: 6px;
+			color: var(--brand-dark);
+		}
+
+		.testimonial-card p {
+			color: var(--ink-muted);
+			font-style: italic;
+		}
+
+		.contact-form {
+			display: grid;
+			gap: 16px;
+			margin-top: 12px;
+		}
+
+		.field {
+			display: grid;
+			gap: 8px;
+		}
+
+		label {
+			font-weight: 600;
+		}
+
+		input,
+		textarea,
+		select,
+		button {
+			font: inherit;
+			border-radius: 10px;
+		}
+
+		input,
+		textarea,
+		select {
+			border: 1px solid #b8c7c2;
+			padding: 12px;
+			background: #ffffff;
+			color: var(--ink);
+		}
+
+		textarea {
+			resize: vertical;
+		}
+
+		input:focus,
+		textarea:focus,
+		select:focus {
+			outline: 3px solid rgba(15, 118, 110, 0.2);
+			border-color: var(--brand);
+		}
+
+		button {
+			width: fit-content;
+			background: var(--accent);
+			color: #1a1a1a;
+			border: none;
+			padding: 12px 20px;
+			font-weight: 700;
+			cursor: pointer;
+			transition: transform 0.2s ease, filter 0.2s ease;
+		}
+
+		button:hover {
+			transform: translateY(-2px);
+			filter: brightness(1.04);
+		}
+
+		footer {
+			text-align: center;
+			color: #5e6b7c;
+			margin: 26px 0 10px;
+			font-size: 0.95rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.footer-brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			font-weight: 600;
+			color: var(--ink);
+		}
+
+		.footer-brand img {
+			width: 40px;
+			height: 40px;
+			display: block;
+		}
+
+		@keyframes fade-in {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes rise {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@media (max-width: 680px) {
+			.site-wrap {
+				padding: 16px;
+			}
+
+			.hero {
+				padding: 36px 20px;
+			}
+
+			section {
+				padding: 20px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="site-wrap">
+		<header class="hero">
+			<div class="hero-brand" aria-label="Hand-In-Hand logo and brand">
+				<img src="file-2.svg" alt="Hand-In-Hand logo">
+				<div class="brand-copy">
+					<strong>Hand-In-Hand</strong>
+					<span>Educational Services</span>
+				</div>
+			</div>
+			<h1>Together We Help Children Reach Their Potential</h1>
+			<p>
+				Partnering with families to support meaningful academic growth,
+				behavioral development, and lifelong confidence in learning.
+			</p>
+		</header>
+
+		<main>
+			<section class="about" id="about-us">
+				<h2>About Us</h2>
+				<p>
+					Hand-In-Hand provides personalized educational support designed around each
+					learner's strengths and goals. Our team collaborates with students and
+					parents to deliver practical strategies that improve
+					outcomes in and beyond the classroom.
+				</p>
+			</section>
+
+			<section id="testimonials">
+				<h2>Testimonials</h2>
+				<div class="testimonials-grid">
+					<article class="testimonial-card">
+						<strong>Sarah -- Parent</strong>
+						<p>"Hand-In-Hand has been instrumental in helping my child discover their learning strengths."</p>
+					</article>
+					<article class="testimonial-card">
+						<strong>Carie -- Parent</strong>
+						<p>"The educational insights I gained from Hand-In-Hand transformed our approach to teaching my child. Their support was invaluable and foundational to my child's success."</p>
+					</article>
+					<article class="testimonial-card">
+						<strong>Tyler -- Student</strong>
+						<p>"Hand-In-Hand has helped me understand my learning style and improve my academic performance."</p>
+					</article>
+				</div>
+			</section>
+
+			<section id="contact">
+				<h2>Inquiry Form</h2>
+				<form class="contact-form" action="https://formspree.io/f/mqpzprqp" method="post">
+					<div class="field">
+						<label for="name">Name</label>
+						<input id="name" name="name" type="text" required>
+					</div>
+
+					<div class="field">
+						<label for="email">Email</label>
+						<input id="email" name="email" type="email" required>
+					</div>
+
+					<div class="field">
+						<label for="inquiry-type">Inquiry type</label>
+						<select id="inquiry-type" name="inquiryType" required>
+							<option value="" selected disabled>Select an option</option>
+							<option value="general">General</option>
+							<option value="academic-services">Academic Services</option>
+							<option value="behavioral-services">Behavioral Services</option>
+							<option value="academic-behavioral-services">Academic/Behavioral Services</option>
+						</select>
+					</div>
+
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5" required></textarea>
+					</div>
+
+					<button type="submit">Send Inquiry</button>
+				</form>
+			</section>
+			<section id="contact-info" aria-label="Contact information">
+				<h2>Contact Information</h2>
+				<p>Farina Hameed -- Founder & Managing Director</p>
+				<p>Email: <a href="mailto:farinanadeem99@gmail.com">farinanadeem99@gmail.com</a></p>
+				<p>Phone: <a href="tel:+3104048186">+1 (310) 404-8186</a></p>
+		</main>
+
+		<footer>
+			<div class="footer-brand">
+				<img src="file-2.svg" alt="Hand-In-Hand logo">
+				<span>Hand-In-Hand Educational Services</span>
+			</div>
+			<p>&copy; 2026 Hand-In-Hand Educational Services. All rights reserved.</p>
+		</footer>
+	</div>
+</body>
+</html>
