@@ -57,7 +57,35 @@
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 16px;
+			gap: 20px;
+		}
+
+		.hero-title-row {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 24px;
+			flex-wrap: wrap;
+			width: 100%;
+			margin-top: 6px;
+		}
+
+		.hero-title-row h1 {
+			flex: 1 1 320px;
+			margin-bottom: 0;
+			padding-right: 12px;
+		}
+
+		.hero-title-row img {
+			display: block;
+			width: min(340px, 100%);
+			height: 280px;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 18px;
+			border: 2px solid rgba(255, 255, 255, 0.25);
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+			background: #ffffff;
 		}
 
 		.hero-brand {
@@ -68,8 +96,8 @@
 		}
 
 		.hero-brand img {
-			width: 74px;
-			height: 74px;
+			width: 180px;
+			height: 180px;
 			display: block;
 			border-radius: 16px;
 			background: rgba(255, 255, 255, 0.12);
@@ -81,16 +109,17 @@
 			gap: 2px;
 		}
 
-		.hero-brand .brand-copy strong {
+		.hero-brand .brand-copy h2 {
 			font-family: "Fraunces", Georgia, serif;
-			font-size: 1.05rem;
-			color: #f7fffd;
+			font-size: 3.45rem;
+			color: #ffffff;
+			margin-bottom: 0;
 		}
 
 		.hero-brand .brand-copy span {
 			color: #dcfffb;
 			opacity: 0.95;
-			font-size: 0.95rem;
+			font-size: 1rem;
 		}
 
 		.hero::after {
@@ -111,9 +140,11 @@
 		}
 
 		h1 {
-			font-size: clamp(2rem, 5vw, 3.2rem);
+			font-family: Georgia, "Times New Roman", serif;
+			font-style: italic;
+			font-size: clamp(1.8rem, 4vw, 2.7rem);
 			margin-bottom: 10px;
-			max-width: 12ch;
+			max-width: 11ch;
 		}
 
 		.hero p {
@@ -155,6 +186,54 @@
 		.about p {
 			color: var(--ink-muted);
 			max-width: 68ch;
+		}
+
+		.feature-grid {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: 1.04fr 0.96fr;
+			align-items: center;
+		}
+
+		.feature-grid.reverse {
+			grid-template-columns: 0.96fr 1.04fr;
+		}
+
+		.feature-panel {
+			display: grid;
+			gap: 12px;
+		}
+
+		.image-card {
+			background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(239, 247, 245, 0.95));
+			border: 1px solid var(--border);
+			border-radius: 20px;
+			padding: 10px;
+			box-shadow: var(--shadow);
+		}
+
+		.image-card img {
+			display: block;
+			width: 100%;
+			height: auto;
+			max-height: 320px;
+			object-fit: contain;
+			object-position: center;
+			background: #ffffff;
+			border-radius: 14px;
+		}
+
+		.image-card figcaption {
+			margin-top: 10px;
+			color: var(--ink-muted);
+			font-size: 0.96rem;
+		}
+
+		.spotlight-grid {
+			display: grid;
+			gap: 16px;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			margin-top: 14px;
 		}
 
 		.testimonials-grid {
@@ -308,26 +387,51 @@
 			<div class="hero-brand" aria-label="Hand-In-Hand logo and brand">
 				<img src="file-2.svg" alt="Hand-In-Hand logo">
 				<div class="brand-copy">
-					<strong>Hand-In-Hand</strong>
+					<h2>Hand-In-Hand</h2>
 					<span>Educational Services</span>
 				</div>
 			</div>
-			<h1>Together We Help Children Reach Their Potential</h1>
-			<p>
-				Partnering with families to support meaningful academic growth,
-				behavioral development, and lifelong confidence in learning.
-			</p>
+			<div class="hero-title-row">
+				<h1>Together We Help Children Reach Their Potential</h1>
+				<img src="assets/screenshot-3.png" alt="Illustrative support image for Hand-In-Hand education">
+			</div>
 		</header>
 
 		<main>
 			<section class="about" id="about-us">
-				<h2>About Us</h2>
-				<p>
-					Hand-In-Hand provides personalized educational support designed around each
-					learner's strengths and goals. Our team collaborates with students and
-					parents to deliver practical strategies that improve
-					outcomes in and beyond the classroom.
-				</p>
+				<div class="feature-grid">
+					<div class="feature-panel">
+						<h2>About Us</h2>
+						<p>
+							Hand-In-Hand provides personalized educational support designed around each
+							learner's strengths and goals. Our team collaborates with students and
+							parents to deliver practical strategies that improve
+							outcomes in and beyond the classroom.
+						</p>
+						<p>
+							We pair calm guidance with clear next steps so children and caregivers feel
+							confident as they move forward together.
+						</p>
+					</div>
+					<figure class="image-card">
+						<img src="assets/screenshot-1.png" alt="A warm educational support setting with thoughtful planning materials">
+						<figcaption>Support that feels personal, steady, and grounded in real progress.</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section id="approach">
+				<h2>What the experience looks like</h2>
+				<div class="spotlight-grid">
+					<article class="image-card">
+						<img src="assets/screenshot-2.png" alt="A collaborative educational session focused on student growth">
+						<figcaption>Goal-oriented conversation that helps families make informed next steps.</figcaption>
+					</article>
+					<article class="image-card">
+						<img src="assets/screenshot-4.png" alt="A calm environment that centers student learning and encouragement">
+						<figcaption>Gentle, encouraging support that helps students build resilience and confidence.</figcaption>
+					</article>
+				</div>
 			</section>
 
 			<section id="testimonials">
@@ -349,8 +453,14 @@
 			</section>
 
 			<section id="contact">
-				<h2>Inquiry Form</h2>
-				<form class="contact-form" action="https://formspree.io/f/mqpzprqp" method="post">
+				<div class="feature-grid reverse">
+					<div class="feature-panel">
+						<h2>Inquiry Form</h2>
+						<p>
+							Whether you are exploring support for a child or seeking guidance for your family,
+							we would love to hear from you and share what may be a good fit.
+						</p>
+						<form class="contact-form" action="https://formspree.io/f/mqpzprqp" method="post">
 					<div class="field">
 						<label for="name">Name</label>
 						<input id="name" name="name" type="text" required>
@@ -377,14 +487,17 @@
 						<textarea id="message" name="message" rows="5" required></textarea>
 					</div>
 
-					<button type="submit">Send Inquiry</button>
-				</form>
+						<button type="submit">Send Inquiry</button>
+					</form>
+				</div>
+				</div>
 			</section>
 			<section id="contact-info" aria-label="Contact information">
 				<h2>Contact Information</h2>
 				<p>Farina Hameed -- Founder & Managing Director</p>
 				<p>Email: <a href="mailto:farinanadeem99@gmail.com">farinanadeem99@gmail.com</a></p>
 				<p>Phone: <a href="tel:+3104048186">+1 (310) 404-8186</a></p>
+			</section>
 		</main>
 
 		<footer>
