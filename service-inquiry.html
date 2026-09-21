@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Service Inquiry | Hand-In-Hand</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+	<div class="site-wrap">
+		<header class="hero">
+			<nav class="site-nav" aria-label="Primary">
+				<a href="index.html">Home</a>
+				<a href="locations-services.html">Locations &amp; Services</a>
+				<a href="service-inquiry.html" aria-current="page">Service Inquiry</a>
+			</nav>
+			<div class="hero-brand" aria-label="Hand-In-Hand logo and brand">
+				<img src="file-2.svg" alt="Hand-In-Hand logo">
+				<div class="brand-copy">
+					<h2>Hand-In-Hand</h2>
+					<span>Educational Services</span>
+				</div>
+			</div>
+			<div class="hero-title-row">
+				<h1>Service Inquiry</h1>
+			</div>
+		</header>
+
+		<main>
+			<section id="contact">
+				<div class="feature-panel">
+					<h2>Inquiry Form</h2>
+					<p>
+						Whether you are exploring support for a child or seeking guidance for your family,
+						we would love to hear from you and share what may be a good fit.
+					</p>
+					<form class="contact-form" action="https://formspree.io/f/mqpzprqp" method="post">
+						<div class="field">
+							<label for="name">Name</label>
+							<input id="name" name="name" type="text" required>
+						</div>
+
+						<div class="field">
+							<label for="email">Email</label>
+							<input id="email" name="email" type="email" required>
+						</div>
+
+						<div class="field">
+							<label for="inquiry-type">Inquiry type</label>
+							<select id="inquiry-type" name="inquiryType" required>
+								<option value="" selected disabled>Select an option</option>
+								<option value="general">General</option>
+								<option value="academic-services">Academic Services</option>
+								<option value="behavioral-services">Behavioral Services</option>
+								<option value="academic-behavioral-services">Academic/Behavioral Services</option>
+							</select>
+						</div>
+
+						<div class="field" id="service-field" hidden>
+							<label for="service">Service</label>
+							<select id="service" name="service">
+								<option value="" selected disabled>Select an option</option>
+								<option value="math">Math</option>
+								<option value="ela">ELA</option>
+								<option value="science">Science</option>
+								<option value="math-ela">Math &amp; ELA</option>
+								<option value="math-ela-science">Math, ELA &amp; Science</option>
+							</select>
+						</div>
+
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea id="message" name="message" rows="5" required></textarea>
+						</div>
+
+						<button type="submit">Send Inquiry</button>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="footer-brand">
+				<img src="file-2.svg" alt="Hand-In-Hand logo">
+				<span>Hand-In-Hand Educational Services</span>
+			</div>
+			<p>&copy; 2026 Hand-In-Hand Educational Services. All rights reserved.</p>
+		</footer>
+	</div>
+
+	<script>
+		const inquiryType = document.getElementById('inquiry-type');
+		const serviceField = document.getElementById('service-field');
+		const serviceSelect = document.getElementById('service');
+
+		function toggleServiceField() {
+			const showService = inquiryType.value === 'academic-services';
+			serviceField.hidden = !showService;
+			serviceSelect.required = showService;
+			if (!showService) {
+				serviceSelect.value = '';
+			}
+		}
+
+		inquiryType.addEventListener('change', toggleServiceField);
+		toggleServiceField();
+	</script>
+</body>
+</html>
